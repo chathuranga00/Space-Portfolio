@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@400;600;700&display=swap');
+
+@import 'tailwindcss';
+@config '../tailwind.config.js';
+
+/* —— Space Explorer design tokens —— */
+:root {
+  --color-bg: #050816;
+  --color-navy: #0b1120;
+  --color-blue: #4f9cf9;
+  --color-purple: #8b5cf6;
+  --color-cyan: #22d3ee;
+  --color-white: #ffffff;
+
+  font-family: 'Inter', system-ui, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: var(--color-bg);
+  color: var(--color-white);
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  min-height: 100svh;
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Poppins', system-ui, sans-serif;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+/* —— Utility classes —— */
+.glass {
+  background: rgba(5, 8, 22, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(79, 156, 249, 0.2);
+  border-radius: 16px;
+}
+
+.glow-text {
+  background: linear-gradient(135deg, #4f9cf9, #8b5cf6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* —— Scrollbar —— */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-cyan) var(--color-navy);
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--color-navy);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--color-cyan);
+  border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--color-blue);
+}
+
+/* —— Global keyframes —— */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.55;
+    filter: drop-shadow(0 0 6px rgba(34, 211, 238, 0.35));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 14px rgba(34, 211, 238, 0.65));
+  }
+}
+
+@keyframes shooting-star {
+  0% {
+    transform: translate(0, 0) rotate(-45deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(280px, 280px) rotate(-45deg);
+    opacity: 0;
+  }
+}
+
+/* —— Loading screen (preserved) —— */
+@keyframes loading-rocket-fly {
+  0%,
+  100% {
+    transform: translateY(12px) rotate(-4deg);
+  }
+  50% {
+    transform: translateY(-28px) rotate(3deg);
+  }
+}
+
+@keyframes loading-exhaust-pulse {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: translateX(-50%) scaleY(0.7);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) scaleY(1.2);
+  }
+}
+
+@keyframes loading-twinkle {
+  0%,
+  100% {
+    opacity: 0.15;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.loading-rocket {
+  animation: loading-rocket-fly 2.2s ease-in-out infinite;
+}
+
+.loading-exhaust {
+  animation: loading-exhaust-pulse 0.5s ease-in-out infinite;
+}
+
+.loading-star {
+  animation: loading-twinkle ease-in-out infinite;
+}
+
+/* Space Explorer canvas cursor */
+canvas.space-canvas {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='1.5' fill='%2322d3ee'/%3E%3Cpath stroke='%2322d3ee' stroke-width='1.5' d='M12 3v5M12 16v5M3 12h5M16 12h5'/%3E%3C/svg%3E")
+      12 12,
+    crosshair;
+}
